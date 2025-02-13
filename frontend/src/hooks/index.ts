@@ -1,21 +1,21 @@
 import { useEffect, useState } from "react"
 import axios from "axios"
 
-
 export interface Blog {
-    content: string
-    title: string
-    id: number
+    id: number;
+    title: string;
+    content: string;
     author: {
-        name: string
-    }
+        name: string;
+    };
 }
+
 
 export const useBlog = ({ id }: { id: number }) => {
     //you can use here atom and selector this will be the best use case but for now we are doing it with 
     // state variables willl see them afterwards when we are done with this one for all
     const [loading, setLoading] = useState(true);
-    const [blog, setBlog] = useState<Blog>();
+    const [blog, setBlog] = useState<Blog | null>(null);
 
     useEffect(() => {
         axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/v1/blog?id=${id}`, {

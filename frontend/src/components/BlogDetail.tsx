@@ -2,7 +2,10 @@ import { Blog } from "../hooks"
 import { Appbar } from "./Appbar"
 import { Avatar } from "./BlogCard"
 
-export const BlogDetail = ({blog}:{blog:Blog}) =>{
+export const BlogDetail = ({blog}:{blog:Blog | null}) =>{
+  if(!blog){
+    return <div>Loading Blog details...</div>
+  }
      return <div>
         <Appbar/>
         <div className="grid grid-cols-12 px-10 w-full pt-200">
